@@ -12,7 +12,7 @@ var cities = $("#cities");
                     VARIABLES AND CONSTANTS
 **************************************************/
 var urlBase = "http://api.openweathermap.org/";
-var urlEnd = "&appid=5af7e440df7c59ead813eff5795179d2&units=imperial";
+var urlEnd = "&appid=5af7e440df7c59ead813eff5795179d2";
 
 
 /*************************************************
@@ -62,6 +62,10 @@ function init() {
 **************************************************/
 $("#searchBtn").on("click", function() {
     var searchCity = $("#searchCity").val();
-    console.log(searchCity);
+    var request = urlBase + "data/2.5/weather?q=" + searchCity + urlEnd;
+    fetch(request) 
+    .then(response => response.json())
+    .then(data => console.log(data));
+    
 });
 
