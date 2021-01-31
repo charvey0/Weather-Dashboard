@@ -3,10 +3,10 @@
 /*************************************************
                     DOM VARIABLES 
 **************************************************/
-
 var display1 = $("#display1").append("Display 1");
 var display2 = $("#display2").append("Display 2");
 var display3 = $("#display3").append("Display 3");
+var cities = $("#cities");
 
 /*************************************************
                     VARIABLES AND CONSTANTS

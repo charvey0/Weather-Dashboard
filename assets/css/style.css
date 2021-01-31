@@ -1,7 +1,4 @@
-
-
 main{
-    background-color: #dddddd;
     padding: 50px;
     margin-top: 30px;
 }
@@ -10,6 +7,27 @@ header > h1{
  color: #dddddd;
 }
 
+#cities > h4{
+    padding: 15px 0px 10px 0px;
+   }
+
 header {
     height: 60px;
+}
+
+.day-card {
+    width: 19%;
+    float: left;
+    margin: 2px;
+}
+
+.card {
+    padding:10px;
+}
+
+.city {
+    width: 100%;
+    padding: 10px;
+    margin: 2px 15px 0px 15px;
+    background-color: white;
 }
