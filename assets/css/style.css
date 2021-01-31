@@ -1,0 +1,20 @@
+img {
+    padding: 20px;
+}
+
+footer{
+    padding:15px;
+    margin-top: 10px;
+}
+
+body{
+    background-color: gray;
+}
+
+main{
+    background-color: #dddddd;
+    padding: 50px;
+    margin-top: 90px;
+}
+
+#display1, #display2, #display3  { padding:50px;}
