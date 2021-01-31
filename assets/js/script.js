@@ -58,33 +58,10 @@ function init() {
 }
 
 /*************************************************
-                    Nav Link Listeners
+                    Button Listeners
 **************************************************/
-
-nav1.on("click", function(e) {
-     $(".nav-link").removeClass("active");
-     display1.show();
-     display2.hide();
-     display3.hide();
-     nav1.addClass("active");
+$("#searchBtn").on("click", function() {
+    var searchCity = $("#searchCity").val();
+    console.log(searchCity);
 });
 
-nav2.on("click", function(e) {
-    $(".nav-link").removeClass("active");
-    display1.hide();
-    display2.show();
-    display3.hide();
-    nav2.addClass("active");
-});
-
-nav3.on("click", function(e) {
-    $(".nav-link").removeClass("active");
-    display1.hide();
-    display2.hide();
-    display3.show();
-    nav3.addClass("active");
-});
-
-navBrand.on("click", function(e) {
-    init();
-});
