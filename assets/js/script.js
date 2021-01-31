@@ -4,33 +4,22 @@
                     DOM VARIABLES 
 **************************************************/
 
-var title = $("#title").html("Title");
-//var navBar = $("#navbar");
-var navBrand = $("#navBrand").html("Title");
-var nav1 = $("#nav-link-1").html("Nav Link 1");
-var nav2 = $("#nav-link-2").html("Nav LInk 2");
-var nav3 = $("#nav-link-3").html("Nav Link 3");
 var display1 = $("#display1").append("Display 1");
 var display2 = $("#display2").append("Display 2");
 var display3 = $("#display3").append("Display 3");
-var main = $("#main");
-//var footer = $("#footer");
-//var copyright = $("#copyright");
-
 
 /*************************************************
                     VARIABLES AND CONSTANTS
 **************************************************/
-
-
+var urlBase = "http://api.openweathermap.org/";
+var urlEnd = "&appid=5af7e440df7c59ead813eff5795179d2&units=imperial";
 
 
 /*************************************************
                     HELPER FUNCTIONS
 **************************************************/
-// INPUT: 
-// OUTPUT: 
-function sampleFunction(){
+// checks to see if there is a search history, if not asks user to do a search
+function firstSearch(){
 //  console.log("sampleFunction() called.");     /*
         // TODO: 
     
@@ -58,12 +47,13 @@ function sampleState() {
 // NEXT: next()
 function init() {
 //  console.log("function init() called;");     /*    
-    $(".nav-link").removeClass("active");
-    nav1.addClass("active");
-    display1.show();
-    display2.hide();
-    display3.hide();
-//        next();
+  display3.hide();
+  if (firstSearch()) { 
+    display1.hide();   
+  } else { 
+    display2.hide(); 
+  }
+
 // */
 }
 
