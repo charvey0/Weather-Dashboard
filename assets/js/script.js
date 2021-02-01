@@ -57,7 +57,7 @@ function displayHistory() {
         return;
     } 
     for (var i=0 ; i<history.length ; i++) {
-        display.prepend('<div class="city btn btn-outline-secondary">'+history[i]+'</div>');
+        display.prepend('<div class="city btn btn-success">'+history[i]+'</div>');
     }
 
 
