@@ -38,8 +38,16 @@ function getUV(lat, lon) {
     fetch (request)
     .then(response => response.json())
     .then(function (data) {
-        html += data.value;
-        html += '</p>';
+        var uv = data.value;
+        if (uv<3){
+            html += "<span class='btn btn-success'>";
+        } else if (uv >=7 ) {
+            html += "<span class='btn btn-danger'>";
+        } else {
+            html += "<span class='btn btn-warning'>";
+        }
+        html += uv;
+        html += '</span></p>';
         current.append(html);
     });
 }
