@@ -59,6 +59,12 @@ function displayHistory() {
     for (var i=0 ; i<history.length ; i++) {
         display.prepend('<div class="city btn btn-outline-secondary">'+history[i]+'</div>');
     }
+
+
+    $(".city").on("click", function(e) {
+        $("#searchCity").val(e.target.innerText);
+        $("#searchBtn").click();
+    });
 }
 
     
@@ -115,6 +121,7 @@ function init() {
 /*************************************************
                     Button Listeners
 **************************************************/
+
 $("#searchBtn").on("click", function() {
     current.empty();
     var searchCity = $("#searchCity").val();
