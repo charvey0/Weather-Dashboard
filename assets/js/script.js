@@ -35,19 +35,31 @@ function lastSearch(){
 }
 
 function saveSearch(city){
-    //  console.log("sampleFunction() called.");     /*
-        var history = JSON.parse(localStorage.getItem("history"));
-        if (history === null) {
-            history = [];
-        } 
-        if (!history.includes(city)) {
-            history.push(city);
-            localStorage.setItem("history", JSON.stringify(history));
-        }
-        // */
+//  console.log("sampleFunction() called.");     /*
+    var history = JSON.parse(localStorage.getItem("history"));
+    if (history === null) {
+        history = [];
+    } 
+    if (!history.includes(city)) {
+        history.push(city);
+        localStorage.setItem("history", JSON.stringify(history));
     }
+    displayHistory();
+// */
+}
     
 
+function displayHistory() {
+    var display = $("#history");
+    display.empty();
+    var history = JSON.parse(localStorage.getItem("history"));
+    if (history === null) {
+        return;
+    } 
+    for (var i=0 ; i<history.length ; i++) {
+        display.prepend('<div class="city btn btn-outline-secondary">'+history[i]+'</div>');
+    }
+}
 
     
 // looks up the UV index then returns the div to be displayed
