@@ -125,7 +125,6 @@ function display5day(city) {
     fetch(request)
     .then (response => response.json())
     .then (function (data) {
-        console.log(data);
         for (var i=0 ; i<data.list.length ; i++) {
 
             var formattedDate = new Date(data.list[i].dt_txt);
@@ -136,7 +135,7 @@ function display5day(city) {
                 m++;  // JavaScript months are 0-11
                 var y = formattedDate.getFullYear();
                 var html = `        <div class="card day-card">
-                <!-- <img src="..." alt="..." class="card-img"> -->
+                <img src="https://openweathermap.org/img/wn/`+ data.list[i].weather[0].icon +`@2x.png" alt="`+data.list[i].weather[0].description+`" class="card-img">
                 <div class="card-body">
                   <h6 class="card-title">`;
                 html += m+"/"+d+"/"+y;
@@ -173,10 +172,16 @@ $("#searchBtn").on("click", function() {
     .then(function (data) {
        lat = data.coord.lat;
        lon = data.coord.lon;
-       var html = '<h4 class="card-title">Current conditions in '+data.name+':</h4>';
+       var html = `<h4 class="card-title">Current conditions in `+data.name+`:</h4>`;
+       html += `<div class="row">
+       <div class="col-sm-4">`;
        html += "<p>Temperature: "+data.main.temp+" &deg;F</p>";
        html += "<p>Humidity: "+data.main.humidity+"%</p>";
-       html += "<p>Wind Speed: "+data.wind.speed+" MPH</p>";
+       html += `<p>Wind Speed: `+data.wind.speed+` MPH</p>
+</div>`;
+       html += `<div class="col-sm-4">
+       <img id="current_icon" src="https://openweathermap.org/img/wn/`+ data.weather[0].icon +`@2x.png" alt="`+data.weather[0].description+`" class="card-img">
+       </div></div>`;
        current.append(html);
        getUV(lat, lon);
        saveSearch(data.name);

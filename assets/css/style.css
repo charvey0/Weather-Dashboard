@@ -1,3 +1,8 @@
+img {
+    padding: 0px;
+    background-color: #0275d8;
+}
+
 main{
     padding: 50px;
 }
@@ -39,7 +44,11 @@ header {
 
 .city {
     margin: 2px 15px 0px 15px;
-    background-color:#292b2c;
+    background-color:#5cb85c;
     color: white;
+} 
+
+ #current_icon {
+    width: 100px;
 } 
 
