@@ -9,8 +9,8 @@ var display3 = $("#display3").append("Display 3");
 var cities = $("#cities");
 var current = $("#current");
 
-var lat = "47.6062";
-var lon = "-122.3321";
+var lat = "";
+var lon = "";
 
 /*************************************************
                     VARIABLES AND CONSTANTS
@@ -85,6 +85,7 @@ function init() {
                     Button Listeners
 **************************************************/
 $("#searchBtn").on("click", function() {
+    current.empty();
     var searchCity = $("#searchCity").val();
     var request = urlBase + "data/2.5/weather?q=" + searchCity + urlEnd;
     fetch(request) 
@@ -97,7 +98,7 @@ $("#searchBtn").on("click", function() {
        html += "<p>Humidity: "+data.main.humidity+"%</p>";
        html += "<p>Wind Speed: "+data.wind.speed+" MPH</p>";
        current.append(html);
+       getUV(lat, lon);
     });
-    getUV(lat, lon);
 });
 
