@@ -26,12 +26,29 @@ var urlEnd = "&appid=5af7e440df7c59ead813eff5795179d2&units=imperial";
 function lastSearch(){
 //  console.log("sampleFunction() called.");     /*
     var history = JSON.parse(localStorage.getItem("history"));
-    if (history == undefined) {
+    if (history === null) {
         $("#searchCity").val("Seattle");    
-    } 
-    $("#searchCity").val(history[history.length-1]);    
+    } else {
+        $("#searchCity").val(history[history.length-1]);    
+    }
 // */
 }
+
+function saveSearch(city){
+    //  console.log("sampleFunction() called.");     /*
+        var history = JSON.parse(localStorage.getItem("history"));
+        if (history === null) {
+            history = [];
+        } 
+        if (!history.includes(city)) {
+            history.push(city);
+            localStorage.setItem("history", JSON.stringify(history));
+        }
+        // */
+    }
+    
+
+
     
 // looks up the UV index then returns the div to be displayed
 function getUV(lat, lon) {
