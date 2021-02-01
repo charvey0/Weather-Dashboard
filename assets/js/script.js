@@ -126,10 +126,34 @@ function display5day(city) {
     .then (response => response.json())
     .then (function (data) {
         for (var i=0 ; i<data.list.length ; i++) {
-
+            var wDay;
             var formattedDate = new Date(data.list[i].dt_txt);
             var t = formattedDate.getHours();
             if (t == 12) {
+                var day = formattedDate.getDay();
+                switch (day) {
+                    case 0:
+                        wDay = "Sunday";
+                        break;
+                    case 1:
+                        wDay = "Monday";
+                        break;
+                    case 2:
+                        wDay = "Tuesday";
+                        break;
+                    case 3:
+                        wDay = "Wednesday";
+                        break;
+                    case 4:
+                        wDay = "Thursday";
+                        break;
+                    case 5:
+                        wDay = "Friday";
+                        break;
+                    default:
+                        wDay = "Saturday";    
+                }
+       console.log(day);         
                 var d = formattedDate.getDate();
                 var m =  formattedDate.getMonth();
                 m++;  // JavaScript months are 0-11
@@ -138,7 +162,7 @@ function display5day(city) {
                 <img src="https://openweathermap.org/img/wn/`+ data.list[i].weather[0].icon +`@2x.png" alt="`+data.list[i].weather[0].description+`" class="card-img">
                 <div class="card-body">
                   <h6 class="card-title">`;
-                html += m+"/"+d+"/"+y;
+                html += wDay+"<br>"+m+"/"+d+"/"+y;
                 html += `</h6>
                 <div class="card-text">`
                 html += "<p>Temp:<br>"+data.list[i].main.temp+" &deg;F</p>";
