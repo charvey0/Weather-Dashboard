@@ -1,7 +1,6 @@
-img {
+/* img {
     padding: 0px;
-    background-color: #0275d8;
-}
+} */
 
 main{
     padding: 50px;
@@ -13,6 +12,11 @@ header > h1{
 
 h4 {
     margin-top: 30px;
+}
+
+.card-title {
+    color: #333333;
+    font-weight: 600;
 }
 
 .card-title {
@@ -49,5 +53,9 @@ header {
 
  #current_icon {
     width: 100px;
+    background-color: #0275d8;
+    border-style: solid;
+    border-color: #555555;
+    border-radius: 10px;
 } 
 
