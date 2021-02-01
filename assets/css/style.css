@@ -6,31 +6,40 @@ header > h1{
  color: #dddddd;
 }
 
-#cities > h4{
-    padding: 15px 0px 10px 0px;
+h4 {
+    margin-top: 30px;
+}
+
+.card-title {
+    margin-top: 10px;
+}
+
+#history {
+    background-color: whitesmoke;
+    width: 100%;
    }
 
 header {
     height: 60px;
 }
 
-.day-card {
-    width: 19%;
-    float: left;
-    margin: 2px;
-}
 
 .card {
     padding:10px;
-    background-color: whitesmoke;
+}
+
+.day-card {
+    padding: 5px;
+    width: 19%;
+    float: left;
+    margin: 2px;
+    background-color:#0275d8;
+    color: white;
 }
 
 .city {
-    width: 100%;
-    padding: 10px;
     margin: 2px 15px 0px 15px;
-}
+    background-color:#292b2c;
+    color: white;
+} 
 
-#history {
-    margin-top: 30px;
-}
