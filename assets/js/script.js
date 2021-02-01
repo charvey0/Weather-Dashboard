@@ -23,12 +23,14 @@ var urlEnd = "&appid=5af7e440df7c59ead813eff5795179d2&units=imperial";
                     HELPER FUNCTIONS
 **************************************************/
 // checks to see if there is a search history, if not asks user to do a search
-function firstSearch(){
+function lastSearch(){
 //  console.log("sampleFunction() called.");     /*
-        // TODO: 
-    
+    var history = JSON.parse(localStorage.getItem("history"));
+    if (history == undefined) {
+        $("#searchCity").val("Seattle");    
+    } 
+    $("#searchCity").val(history[history.length-1]);    
 // */
-    return true;    
 }
     
 // looks up the UV index then returns the div to be displayed
@@ -72,12 +74,12 @@ function sampleState() {
 function init() {
 //  console.log("function init() called;");     /*    
   display3.hide();
-  if (firstSearch()) { 
+  if (lastSearch()) { 
     display1.hide();   
   } else { 
     display2.hide();
   }
-
+  $("#searchBtn").click();
 // */
 }
 
@@ -99,6 +101,7 @@ $("#searchBtn").on("click", function() {
        html += "<p>Wind Speed: "+data.wind.speed+" MPH</p>";
        current.append(html);
        getUV(lat, lon);
+       saveSearch(data.name);
     });
 });
 
