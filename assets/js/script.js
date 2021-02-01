@@ -118,6 +118,11 @@ function init() {
 // */
 }
 
+function display5day(city) {
+    var request = urlBase + "data/2.5/forcast?q=" + city + urlEnd;
+    console.log(request);
+}
+
 /*************************************************
                     Button Listeners
 **************************************************/
@@ -138,6 +143,7 @@ $("#searchBtn").on("click", function() {
        current.append(html);
        getUV(lat, lon);
        saveSearch(data.name);
+       display5day(data.name);
     });
 });
 
