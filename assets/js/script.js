@@ -119,8 +119,45 @@ function init() {
 }
 
 function display5day(city) {
-    var request = urlBase + "data/2.5/forcast?q=" + city + urlEnd;
-    console.log(request);
+    var request = urlBase + "data/2.5/forecast?q=" + city + urlEnd;
+    var forecast = $("#forecast");
+    forecast.empty();
+    fetch(request)
+    .then (response => response.json())
+    .then (function (data) {
+        console.log(data);
+        for (var i=0 ; i<data.list.length ; i++) {
+
+            var formattedDate = new Date(data.list[i].dt_txt);
+            var t = formattedDate.getHours();
+            if (t == 12) {
+                var d = formattedDate.getDate();
+                var m =  formattedDate.getMonth();
+                m++;  // JavaScript months are 0-11
+                var y = formattedDate.getFullYear();
+                var html = `        <div class="card day-card">
+                <!-- <img src="..." alt="..." class="card-img"> -->
+                <div class="card-body">
+                  <h6 class="card-title">`;
+                html += m+"/"+d+"/"+y;
+                html += `</h6>
+                <div class="card-text">`
+                html += "<p>Temp:<br>"+data.list[i].main.temp+" &deg;F</p>";
+                html += `<p>Humidity:<br>`+data.list[i].main.humidity+`%</p>     
+
+                </div>
+        </div>
+    </div>`;
+                forecast.append(html);
+            }
+        }
+        
+
+    
+    });
+
+
+
 }
 
 /*************************************************
