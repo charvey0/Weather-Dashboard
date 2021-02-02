@@ -19,7 +19,7 @@ I used JavaScript and jQuery to provide interactivity and the OpenWeather API to
 
 ## What I want to know more about:
 
-* jQuery - specifically dynamically building html elements with $("<div>").addClass("container").text("Some text here.");
+* jQuery - specifically dynamically building html elements with $("\<div\>").addClass("container").text("Some text here.");
 * Bootstrap - still needing to look up just about everything, but I am remembering what is possible.
 * Objects - this seems like it is going to be powerful...
 
@@ -31,9 +31,11 @@ I used JavaScript and jQuery to provide interactivity and the OpenWeather API to
  
 ## Functionality Demonstration
 
-
+### Picture
 ![Weather Dashboard in action](./Assets/Weather-Dashboard.png)
 
-[![Weather Dashboard Demonstration](https://img.youtube.com/vi/VID/0.jpg)](https://www.youtube.com/watch?v=VID)
+### Video
+[![Weather Dashboard Demonstration](https://img.youtube.com/vi/8QyREr_MKwg/0.jpg)](https://www.youtube.com/watch?v=8QyREr_MKwg)
 
+### Deployment
 Click [here](https://charvey0.github.io/Weather-Dashboard/) to go to the GitHub Page.
