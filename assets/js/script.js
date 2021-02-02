@@ -3,20 +3,17 @@
 /*************************************************
                     DOM VARIABLES 
 **************************************************/
-var display1 = $("#display1").append("Display 1");
-var display2 = $("#display2").append("Display 2");
-var display3 = $("#display3").append("Display 3");
 var cities = $("#cities");
 var current = $("#current");
 
-var lat = "";
-var lon = "";
 
 /*************************************************
                     VARIABLES AND CONSTANTS
 **************************************************/
 var urlBase = "https://api.openweathermap.org/";
 var urlEnd = "&appid=5af7e440df7c59ead813eff5795179d2&units=imperial";
+var lat = "";
+var lon = "";
 
 
 /*************************************************
@@ -90,34 +87,15 @@ function getUV(lat, lon) {
 }
         
 
-/*************************************************
-                    USER INTERACTION FUNCTIONS
-**************************************************/
-// DISPLAYS:
-// WAITING FOR:
-// NEXT:
-function sampleState() {
-//  console.log("function sampleState() called;");   /*    
-        // TODO:
-
-// */
-}
-
-// DISPLAYS: the opening screen
-// WAITING FOR: user to push the "Begin" button
-// NEXT: next()
+// initializes the page by getting the last city added to the history and "clicks" the searchBtn
 function init() {
 //  console.log("function init() called;");     /*    
-  display3.hide();
-  if (lastSearch()) { 
-    display1.hide();   
-  } else { 
-    display2.hide();
-  }
-  $("#searchBtn").click();
+    lastSearch();
+    $("#searchBtn").click();
 // */
 }
 
+// displays the 5 day forecast
 function display5day(city) {
     var request = urlBase + "data/2.5/forecast?q=" + city + urlEnd;
     var forecast = $("#forecast");
@@ -153,17 +131,16 @@ function display5day(city) {
                     default:
                         wDay = "Saturday";    
                 }
-       console.log(day);         
                 var d = formattedDate.getDate();
                 var m =  formattedDate.getMonth();
                 m++;  // JavaScript months are 0-11
                 var y = formattedDate.getFullYear();
                 var html = `        <div class="card day-card">
                 <img src="https://openweathermap.org/img/wn/`+ data.list[i].weather[0].icon +`@2x.png" alt="`+data.list[i].weather[0].description+`" class="card-img">
-                <div class="card-body">
+                <div class="card-body"><hr>
                   <h6 class="card-title">`;
                 html += wDay+"<br>"+m+"/"+d+"/"+y;
-                html += `</h6>
+                html += `</h6><hr>
                 <div class="card-text">`
                 html += "<p>Temp:<br>"+data.list[i].main.temp+" &deg;F</p>";
                 html += `<p>Humidity:<br>`+data.list[i].main.humidity+`%</p>     
@@ -174,13 +151,7 @@ function display5day(city) {
                 forecast.append(html);
             }
         }
-        
-
-    
     });
-
-
-
 }
 
 /*************************************************
@@ -194,22 +165,28 @@ $("#searchBtn").on("click", function() {
     fetch(request) 
     .then(response => response.json())
     .then(function (data) {
-       lat = data.coord.lat;
-       lon = data.coord.lon;
-       var html = `<h4 class="card-title">Current conditions in `+data.name+`:</h4>`;
-       html += `<div class="row">
-       <div class="col-sm-4">`;
-       html += "<p>Temperature: "+data.main.temp+" &deg;F</p>";
-       html += "<p>Humidity: "+data.main.humidity+"%</p>";
-       html += `<p>Wind Speed: `+data.wind.speed+` MPH</p>
-</div>`;
-       html += `<div class="col-sm-4">
-       <img id="current_icon" src="https://openweathermap.org/img/wn/`+ data.weather[0].icon +`@2x.png" alt="`+data.weather[0].description+`" class="card-img">
-       </div></div>`;
-       current.append(html);
-       getUV(lat, lon);
-       saveSearch(data.name);
-       display5day(data.name);
+        if (data.cod == 200) {
+            lat = data.coord.lat;
+            lon = data.coord.lon;
+            var html = `<h4 class="card-title">Current conditions in `+data.name+`:</h4>`;
+            html += `<div class="row">
+            <div class="col-sm-4">`;
+            html += "<p>Temperature: "+data.main.temp+" &deg;F</p>";
+            html += "<p>Humidity: "+data.main.humidity+"%</p>";
+            html += `<p>Wind Speed: `+data.wind.speed+` MPH</p>
+     </div>`;
+            html += `<div class="col-sm-4">
+            <img id="current_icon" src="https://openweathermap.org/img/wn/`+ data.weather[0].icon +`@2x.png" alt="`+data.weather[0].description+`" class="card-img">
+            </div></div>`;
+            current.append(html);
+            getUV(lat, lon);
+            saveSearch(data.name);
+            display5day(data.name);
+        } else {
+            current.append("<h4 class='card-title'>Sorry, we could not find any information on "+searchCity+".</h4>");
+            $("#forecast").empty();
+        }
+
     });
 });
 

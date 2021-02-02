@@ -1,6 +1,6 @@
-/* img {
-    padding: 0px;
-} */
+header {
+    height: 60px;
+}
 
 main{
     padding: 50px;
@@ -10,31 +10,15 @@ header > h1{
  color: #dddddd;
 }
 
-h4 {
-    margin-top: 30px;
+
+
+.card {
+    padding:10px;
 }
 
 .card-title {
     color: #333333;
     font-weight: 600;
-}
-
-.card-title {
-    margin-top: 10px;
-}
-
-#history {
-    background-color: whitesmoke;
-    width: 100%;
-   }
-
-header {
-    height: 60px;
-}
-
-
-.card {
-    padding:10px;
 }
 
 .day-card {
@@ -59,3 +43,7 @@ header {
     border-radius: 10px;
 } 
 
+#history {
+    background-color: whitesmoke;
+    width: 100%;
+   }
