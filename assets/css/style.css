@@ -2,15 +2,13 @@ header {
     height: 60px;
 }
 
-main{
+main {
     padding: 50px;
 }
 
 header > h1{
  color: #dddddd;
 }
-
-
 
 .card {
     padding:10px;
